@@ -1,0 +1,12 @@
+{
+  "name": "Smart Talk AI",
+  "short_name": "Smart Talk",
+  "description": "Chat, speak and listen with an AI assistant.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F3437",
+  "theme_color": "#0F3437",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
