@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Smart Talk AI</title>
+  <meta name="description" content="Chat, speak and listen with Smart Talk AI." />
+  <meta name="theme-color" content="#0F3437" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icon.svg" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Smart Talk" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- Sidebar: brand, New Chat, Chat History -->
+    <aside class="sidebar" id="sidebar" aria-label="Chat history">
+      <div class="sidebar-head">
+        <div class="brand">
+          <img src="/icon.svg" alt="" width="34" height="34" />
+          <span>Smart Talk AI</span>
+        </div>
+        <button class="icon-btn only-mobile" id="closeSidebar" type="button" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <button class="new-chat" id="newChatBtn" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        New chat
+      </button>
+
+      <nav class="history" aria-label="Previous chats">
+        <h2 class="history-title">History</h2>
+        <ul id="historyList"></ul>
+        <p class="history-empty" id="historyEmpty">Your chats will appear here.</p>
+      </nav>
+
+      <p class="sidebar-note">Chats are saved only in this browser on this device.</p>
+    </aside>
+
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- Main chat -->
+    <main class="chat">
+      <header class="topbar">
+        <button class="icon-btn only-mobile" id="openSidebar" type="button" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <h1 class="chat-title" id="chatTitle">Smart Talk AI</h1>
+        <button class="toggle" id="autoSpeakBtn" type="button" role="switch" aria-checked="false" title="Read new answers aloud">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+          <span>Read aloud</span>
+        </button>
+      </header>
+
+      <section class="messages" id="messages" role="log" aria-live="polite" aria-label="Conversation">
+        <div class="empty" id="emptyState">
+          <img src="/icon.svg" alt="" width="64" height="64" />
+          <h2>What can I help with?</h2>
+          <p>Type, or tap the microphone and talk. I can read my answers back to you.</p>
+          <div class="suggestions">
+            <button type="button" data-prompt="Explain how the internet works in simple words">Explain how the internet works</button>
+            <button type="button" data-prompt="Give me a 3-day study plan to learn basic English conversation">Plan 3 days of English practice</button>
+            <button type="button" data-prompt="Write a polite message asking my teacher for a deadline extension">Write a polite extension request</button>
+            <button type="button" data-prompt="Tell me an interesting fact about space">Tell me a fact about space</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="composer-wrap">
+        <form class="composer" id="composer" autocomplete="off">
+          <label class="sr-only" for="input">Message</label>
+          <textarea id="input" rows="1" maxlength="4000" placeholder="Message Smart Talk AI" enterkeyhint="send"></textarea>
+          <button class="round-btn mic" id="micBtn" type="button" aria-label="Start voice input" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>
+          </button>
+          <button class="round-btn send" id="sendBtn" type="submit" aria-label="Send message" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+          </button>
+        </form>
+        <p class="hint">On a computer: Enter sends, Shift+Enter adds a new line. AI can make mistakes.</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
