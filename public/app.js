@@ -472,7 +472,7 @@
 
     chunks.forEach((chunk, i) => {
       const u = new SpeechSynthesisUtterance(chunk);
-      u.lang = /[\u0900-\u097F]/.test(chunk) ? "hi-IN" : "en-US";
+      u.lang = /[\u0900-\u097F]/.test(chunk) ? "hi-IN" : "en-hi";
       u.rate = 1;
       if (i === chunks.length - 1) {
         u.onend = () => { if (speakingBtn === btn) { setSpeakingUI(btn, false); speakingBtn = null; } };
